@@ -92,8 +92,35 @@ int consultar()
 
 int deletar()
 {
-	printf("você escolheu deletar nomes!\n");
-	system("pause");
+	char cpf[40];
+	
+	printf("Digite o CPF do usuário a ser deletado: ");
+	scanf("%s",cpf);
+		
+		
+	
+	FILE *file;	
+	file = fopen(cpf,"r");
+	
+	if(file == NULL)
+	{
+		printf("O usuário não se encontra no sistema!.\n");
+		system("pause");
+	}
+	else
+	{
+		fclose(file);
+		remove(cpf);
+		FILE *file;	
+		file = fopen(cpf,"r");
+		if(file == NULL)
+		{
+			printf("Usuário deletado com sucesso!.\n");
+			system("pause");
+		}
+	}
+	fclose(file);
+	
 }
 
 int main()
